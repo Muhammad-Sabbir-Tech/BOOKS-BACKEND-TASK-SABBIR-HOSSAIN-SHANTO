@@ -13,7 +13,7 @@ class BookServcie {
             genres: bookCreateDto.genres,
             publicationDate: bookCreateDto.publicationDate,
             created_by: bookCreateDto.created_by,
-        }).save()
+        })
     }
 
     // find all
@@ -22,7 +22,7 @@ class BookServcie {
             .populate({
                 path: "author",
                 model: "Author",
-                select: ["name", "birthdate"]
+                select: ["name", "birthdate"],
             })
             .populate({
                 path: "created_by",

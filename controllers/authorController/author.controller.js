@@ -1,4 +1,5 @@
 const authorService = require("./author.service")
+const mongoose = require("mongoose")
 
 class AuthorController {
     constructor(props) {
@@ -20,7 +21,7 @@ class AuthorController {
                 // set response
                 response.status = true
                 response.message = "Author created successfully."
-                response.author = author_detail || null
+                response.author = author_detail[0] || null
 
             } else { // if author doesn't create
                 response.status = false
