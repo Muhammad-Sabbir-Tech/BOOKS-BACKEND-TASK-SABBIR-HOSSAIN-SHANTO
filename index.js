@@ -2,6 +2,7 @@ var express = require('express')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 var cors = require('cors')
+const { default: mongoose } = require('mongoose')
 require('dotenv').config()
 
 
@@ -14,6 +15,11 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+
+// connect with mongo db
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("Database connected successfully"))
+    .catch((e) => console.log(e))
 
 // root route initialize
 app.get('/', async function (req, res) {
