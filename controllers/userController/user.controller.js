@@ -40,7 +40,7 @@ class UserController {
             // if user found
             if (user) {
                 // create token
-                const token = jwt.sign({ user_id: user._id }, process.env.PRIVATE_KEY, { expiresIn: '30d' });
+                const token = jwt.sign({ user_id: user._id, role: user.role }, process.env.PRIVATE_KEY, { expiresIn: '30d' });
                 // set cookie
                 res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
                 // set response
