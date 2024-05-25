@@ -16,11 +16,11 @@ class AuthorController {
             // if author created
             if (author) {
                 // get author detail 
-                const author_detail = await authorService.findById(author._id)
+                const author_detail = await authorService.findAuthor(author._id)
                 // set response
                 response.status = true
                 response.message = "Author created successfully."
-                response.author = author_detail
+                response.author = author_detail || null
 
             } else { // if author doesn't create
                 response.status = false
@@ -28,7 +28,10 @@ class AuthorController {
             }
             res.send(response)
         } catch (e) {
-            res.status(500).send(e)
+            res.status(500).send({
+                status: false,
+                error: e
+            })
         }
     }
 
@@ -48,7 +51,10 @@ class AuthorController {
             res.send(response)
 
         } catch (e) {
-            res.status(500).send(e)
+            res.status(500).send({
+                status: false,
+                error: e
+            })
         }
     }
 
@@ -56,19 +62,22 @@ class AuthorController {
     async findSingleAuthor(req, res) {
         try {
             // db operations
-            const author = await authorService.findById(req.params.id)
+            const author = await authorService.findAuthor(req.params.id)
             // set response
             // variable for response
             const response = {}
             // set response
             response.status = true
             response.message = "Data fetched successfully."
-            response.data = author
+            response.data = author[0] || null
 
             res.send(response)
 
         } catch (e) {
-            res.status(500).send(e)
+            res.status(500).send({
+                status: false,
+                error: e
+            })
         }
     }
 

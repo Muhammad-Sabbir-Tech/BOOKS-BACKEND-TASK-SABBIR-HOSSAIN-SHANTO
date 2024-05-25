@@ -34,6 +34,17 @@ app.use("/api/user", userRoute)
 app.use("/api/book", bookRoute)
 app.use("/api/author", authorRoute)
 
+// global error handle
+app.use((err, req, res, next) => {
+    if (err) {
+        res.status(500).send({
+            status: false,
+            message: "Something went wrong! Error catch from error handler.",
+            err
+        }).end
+    }
+})
+
 // server starts here
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

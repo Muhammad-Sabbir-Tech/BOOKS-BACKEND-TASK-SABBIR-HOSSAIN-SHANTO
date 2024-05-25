@@ -24,6 +24,7 @@ class UserController {
             res.json(response)
         } catch (e) {
             res.status(500).send(e?.errorResponse?.code == 11000 ? {
+                status: false,
                 message: "User already exist",
                 ...e
             } : e)
@@ -52,7 +53,10 @@ class UserController {
             }
             res.send(response)
         } catch (e) {
-            res.status(500).send(e)
+            res.status(500).send({
+                status: false,
+                error: e
+            })
         }
     }
 
