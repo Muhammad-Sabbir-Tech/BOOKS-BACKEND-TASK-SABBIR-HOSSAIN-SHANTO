@@ -36,47 +36,4 @@ The Books Backend API is a assessment project developed for RoseTech Solution Lt
 + **Authentication**: JWT
     
 ### API documention
-+ **Register user**
-```
-http://localhost:3000/api/user/register
-```
-+ **Method**: Post
-+ **Credential:** <pre> {
-  "full_name": "Samiul Islam",
-  "contact_no": "01521396944",
-  "user_name": "sami",
-  "password": "123456",
-  "role": "user"
-}</pre>
-
-+ **Login**
-```
-http://localhost:3000/api/user/login
-```
-+ **Method**: Post
-+ **Credential:** <pre> {
-    "user_name":"sami" ,
-    "password":"123456"
-}</pre>
-
-+ **Logout**
-```
-http://localhost:3000/api/user/logout
-```
-+ **Find all Author**
-```
-http://localhost:3000/api/author/
-```
-+ **Find single Author**
-```
-http://localhost:3000/api/author/author_id
-```
-+ **Create author:**
-```
-http://localhost:3000/api/user/login
-```
-+ **Method**: Post
-+ **Credential:** <pre> {
-    "name":"Arif Azad" ,
-    "birthdate":"01/01/1992"
-}</pre>
+I've already provided the **Postman collection** as documention to the **./credentials** directory.
