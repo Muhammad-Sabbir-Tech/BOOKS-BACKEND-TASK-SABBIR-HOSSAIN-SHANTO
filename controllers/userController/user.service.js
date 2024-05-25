@@ -22,6 +22,7 @@ class UserService {
         // db operation
         return User.findOne({ user_name: loginDto.user_name, password: sha1(loginDto.password) })
     }
+
 }
 
 module.exports = new UserService()

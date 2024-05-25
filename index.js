@@ -6,6 +6,7 @@ const { default: mongoose } = require('mongoose')
 require('dotenv').config()
 const userRoute = require("./routes/user.route")
 const bookRoute = require("./routes/book.route")
+const authorRoute = require("./routes/author.route")
 
 
 var app = express()
@@ -31,6 +32,7 @@ app.get('/', async function (req, res) {
 // routes
 app.use("/api/user", userRoute)
 app.use("/api/book", bookRoute)
+app.use("/api/author", authorRoute)
 
 // server starts here
 const port = process.env.PORT || 3000;

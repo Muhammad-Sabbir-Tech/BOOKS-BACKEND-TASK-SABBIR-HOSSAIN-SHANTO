@@ -13,6 +13,11 @@ const AuthorSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book'
     }],
+    created_by: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
 });
 
 module.exports = mongoose.model('Author', AuthorSchema);

@@ -56,6 +56,19 @@ class UserController {
         }
     }
 
+    // logout
+    logout(req, res, next) {
+        // cookie clear
+        res.clearCookie('token');
+        // variable for response
+        const response = {}
+        // set response
+        response.status = true
+        response.message = "Logout successfully"
+
+        res.send(response)
+    }
+
 }
 
 module.exports = new UserController()
