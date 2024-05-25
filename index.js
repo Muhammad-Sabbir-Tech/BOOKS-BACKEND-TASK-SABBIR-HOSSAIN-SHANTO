@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 var cors = require('cors')
 const { default: mongoose } = require('mongoose')
 require('dotenv').config()
+const userRoute = require("./routes/user.route")
 
 
 var app = express()
@@ -25,6 +26,9 @@ mongoose.connect(process.env.MONGO_URI)
 app.get('/', async function (req, res) {
     res.send("Welcome to books backend task.")
 })
+
+// un authenticated routes
+app.use("/api/user", userRoute)
 
 // server starts here
 const port = process.env.PORT || 3000;

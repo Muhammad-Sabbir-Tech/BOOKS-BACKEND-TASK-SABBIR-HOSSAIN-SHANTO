@@ -5,23 +5,26 @@ const { Schema, model } = mongoose
 const userSchema = new Schema({
     full_name: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
-    contact: {
+    contact_no: {
         type: String,
         required: true,
-        unique: true
     },
     user_name: {
         type: String,
-        required: true,
-        unique: true
+        unique: true,
+        required: true
     },
     password: {
         type: String,
         required: true
     },
-})
+    role: {
+        type: String,
+        enum: ['admin', 'user'],
+        default: 'user'
+    }
+}, { timestamps: true })
 
 module.exports = model("User", userSchema)
